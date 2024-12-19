@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Montserrat, "sans-serif";
+  font-weight: 300;
 }
 
 ::-webkit-scrollbar {
@@ -13,4 +14,8 @@
 html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer */
+}
+
+.main {
+  height: 400vh;
 }

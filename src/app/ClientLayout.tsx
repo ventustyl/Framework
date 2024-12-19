@@ -12,8 +12,6 @@ export default function ClientLayout({
 }) {
   const [dark, setDark] = useState(true);
 
-
-
   return (
     <>
       <Navbar dark={dark} toggleDarkMode={() => setDark(!dark)} />

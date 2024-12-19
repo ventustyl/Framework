@@ -1,0 +1,155 @@
+.hero {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.heroText {
+  width: 70%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.heroFunction {
+  width: 30%;
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(0, 212, 255, 0.4) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scrollGroup {
+  padding: 1rem;
+  will-change: transform;
+}
+
+.reactLogo {
+  height: 70vh;
+  width: 70vh;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  background-image: url("/react_logo.svg");
+  background-size: contain;
+  animation: rotate360 20s linear infinite;
+  transform-origin: center;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: bold;
+  color: #20232a;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+
+.heroSubtitle {
+  width: 80%;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: #4a556862;
+  padding: 0 2rem;
+}
+
+.heroButton {
+  width: max-content;
+  padding: 1rem 2rem;
+  margin: 2rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #61dafb34;
+  color: #20232a;
+  font-weight: 600;
+  font-size: 1.1rem;
+  align-self: flex-end;
+  cursor: default;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(97, 218, 251, 0.2);
+}
+
+.heroButton:hover {
+  background-color: #61dafb4d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(97, 218, 251, 0.3);
+  cursor: default;
+}
+
+.functionCard {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.functionCard:last-child {
+  margin-bottom: 0;
+}
+
+.functionCard:hover {
+  transform: scale(1.05);
+  z-index: 1;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .heroText,
+  .heroFunction {
+    width: 100%;
+  }
+
+  .heroText {
+    height: 60vh;
+  }
+
+  .heroFunction {
+    height: 40vh;
+  }
+
+  .reactLogo {
+    height: 40vh;
+    width: 40vh;
+  }
+
+  .heroSubtitle {
+    width: 100%;
+  }
+}

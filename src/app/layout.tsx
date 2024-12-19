@@ -1,4 +1,6 @@
 // src/app/layout.tsx
+import ClientLayout from "./ClientLayout";
+import Hero from "./components/hero/Hero";
 import "./globals.css";
 
 export const metadata = {
@@ -12,11 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-
-    
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <ClientLayout>
+          <main className="main">
+            <Hero />
+          </main>
+        </ClientLayout>
+      </body>
     </html>
   );
 }
