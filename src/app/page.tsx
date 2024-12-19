@@ -1,5 +1,5 @@
-// page.tsx
 import ClientLayout from "./ClientLayout";
+
 import style from "./page.module.css";
 
 export default function Page() {

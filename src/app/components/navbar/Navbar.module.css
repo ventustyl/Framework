@@ -7,8 +7,16 @@
   justify-content: flex-end;
 }
 
+.navbarLight {
+  background-color: antiquewhite;
+}
+
+.navbarDark {
+  background-color: darkcyan;
+}
+
 .navbarAuto {
-  background-color: transparent;
+  position: auto;
 }
 
 .navbarFixed {
@@ -55,12 +63,10 @@
   transform: translateY(-50%);
   border: solid 1px rgba(0, 0, 0, 0.342);
   transition: all 1s ease;
-
 }
 .ligth {
   transform: translateY(-50%) translateX(0); /* Position ligth */
   background: yellow;
-
 }
 .dark {
   transform: translateY(-50%) translateX(22px); /* Position dark */

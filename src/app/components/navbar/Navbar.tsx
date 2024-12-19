@@ -28,8 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ dark, toggleDarkMode }) => {
   return (
     <nav
       className={`${style.navbar} ${
-        scroll ? style.navbarFixed : style.navbarAuto
-      }`}
+        dark ? style.navbarLight : style.navbarDark
+      } ${scroll ? style.navbarFixed : style.navbarAuto}`}
     >
       <ul className={style.navbarUl}>
         <li className={style.navbarLi}>
