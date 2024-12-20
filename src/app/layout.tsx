@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import ClientLayout from "./ClientLayout";
 import Hero from "./components/hero/Hero";
+import Properties from "./components/properties/Properties";
 import "./globals.css";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
         <ClientLayout>
           <main className="main">
             <Hero />
+            <Properties />
           </main>
         </ClientLayout>
       </body>

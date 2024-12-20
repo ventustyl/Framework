@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: Montserrat, "sans-serif";
   font-weight: 300;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {

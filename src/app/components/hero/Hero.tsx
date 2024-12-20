@@ -1,11 +1,11 @@
 // Hero.tsx
-'use client';
+"use client";
 
-import { useEffect, useRef, useCallback } from 'react';
-import { gsap } from 'gsap';
-import { heroFunctions } from './data/heroFunctions';
-import { HeroFunction } from './types';
-import style from './Hero.module.css';
+import { useEffect, useRef, useCallback } from "react";
+import { gsap } from "gsap";
+import { heroFunctions } from "./data/heroFunctions";
+import { HeroFunction } from "./types";
+import style from "./Hero.module.css";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -22,19 +22,19 @@ const Hero = () => {
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: -50 },
-        { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" }
       );
 
       gsap.fromTo(
         subtitleRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: "power3.out" }
       );
 
       gsap.fromTo(
         buttonRef.current,
         { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, delay: 0.9, ease: 'back.out(1.7)' }
+        { opacity: 1, scale: 1, duration: 1, delay: 0.9, ease: "back.out(1.7)" }
       );
     }, heroRef);
 
@@ -50,11 +50,11 @@ const Hero = () => {
     gsap.to(scrollGroups, {
       y: -scrollHeight,
       duration: 20,
-      ease: 'none',
+      ease: "none",
       repeat: -1,
       modifiers: {
-        y: gsap.utils.unitize(y => parseFloat(y) % scrollHeight)
-      }
+        y: gsap.utils.unitize((y) => parseFloat(y) % scrollHeight),
+      },
     });
   }, []);
 
@@ -82,15 +82,18 @@ const Hero = () => {
           une solution moderne et performante pour créer des applications web,
           React est un choix stratégique.
         </p>
-        <button 
-          className={style.heroButton} 
-          ref={buttonRef}
-          onClick={() => console.log('En savoir plus clicked')}
-        >
-          En savoir plus
-        </button>
+        <a href="/#properties">
+          <button
+            className={style.heroButton}
+            ref={buttonRef}
+            onClick={() => console.log("En savoir plus sur React")}
+          >
+            En savoir plus
+          </button>
+        </a>
       </div>
       <div className={style.heroFunction}>
+        <div className={style.heroOverlay}></div>
         <div className={style.scrollContainer} ref={scrollContainerRef}>
           <div className={style.scrollGroup}>
             {heroFunctions.map((func: HeroFunction, index: number) => (
