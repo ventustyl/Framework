@@ -1,0 +1,35 @@
+.article {
+    width: min(80vw, 1200px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .glowIn {
+    color: black;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  .glowIn span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    white-space: pre-wrap;
+  }
+  
+  /* Support pour les utilisateurs qui préfèrent réduire les animations */
+  @media (prefers-reduced-motion: reduce) {
+    .glowIn span {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }

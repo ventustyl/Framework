@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import ClientLayout from "./ClientLayout";
 import Hero from "./components/hero/Hero";
+import Installation from "./components/installation/Installation";
 import Properties from "./components/properties/Properties";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ClientLayout>
           <main className="main">
             <Hero />
+            <Installation />
             <Properties />
           </main>
         </ClientLayout>

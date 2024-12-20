@@ -103,10 +103,13 @@
   color: #20232a;
   font-weight: 400;
   font-size: 1.1rem;
-  align-self: flex-end;
   cursor: default;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(97, 218, 251, 0.2);
+}
+
+.heroLink {
+  align-self: flex-end;
 }
 
 .heroButton:hover {

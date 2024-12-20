@@ -82,7 +82,7 @@ const Hero = () => {
           une solution moderne et performante pour créer des applications web,
           React est un choix stratégique.
         </p>
-        <a href="/#properties">
+        <a  className={style.heroLink} href="/#properties">
           <button
             className={style.heroButton}
             ref={buttonRef}
@@ -119,6 +119,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
