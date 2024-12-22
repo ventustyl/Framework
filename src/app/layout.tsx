@@ -2,6 +2,7 @@
 import ClientLayout from "./ClientLayout";
 import Hero from "./components/hero/Hero";
 import Installation from "./components/installation/Installation";
+import News from "./components/new/New";
 import Properties from "./components/properties/Properties";
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
             <Hero />
             <Installation />
             <Properties />
+            <News />
           </main>
         </ClientLayout>
       </body>

@@ -1,8 +1,9 @@
 .hero {
   display: flex;
   width: 100%;
-  height: calc(100vh - 60px);
+  min-height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
 .heroText {
@@ -12,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding: 2rem;
+  padding: clamp(1rem, 4vw, 2rem);
 }
 
 .heroFunction {
@@ -50,13 +51,13 @@
 }
 
 .scrollGroup {
-  padding: 1rem;
+  padding: clamp(0.5rem, 2vw, 1rem);
   will-change: transform;
 }
 
 .reactLogo {
-  height: 70vh;
-  width: 70vh;
+  height: clamp(40vh, 50vw, 70vh);
+  width: clamp(40vh, 50vw, 70vh);
   background-repeat: no-repeat;
   position: absolute;
   top: 50%;
@@ -80,36 +81,45 @@
 }
 
 .heroTitle {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2rem, 6vw, 6rem);
   color: #20232a;
-  margin-bottom: 2rem;
-  padding: 0 2rem;
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  padding: 0 clamp(1rem, 2vw, 2rem);
 }
 
 .heroSubtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
   line-height: 1.6;
   color: #4a5568a6;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+  max-width: 65ch;
+}
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  padding: clamp(1rem, 2vw, 2rem);
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .heroButton {
   width: max-content;
-  padding: 1rem 2rem;
-  margin: 2rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
   border-radius: 2rem;
   border: none;
   background-color: #61dafb34;
   color: #20232a;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
   cursor: default;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(97, 218, 251, 0.2);
 }
 
 .heroLink {
-  align-self: flex-end;
+  display: inline-block;
 }
 
 .heroButton:hover {
@@ -120,10 +130,10 @@
 }
 
 .functionCard {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
   text-align: center;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: clamp(0.75rem, 2vw, 1rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -140,19 +150,32 @@
   cursor: default;
 }
 
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+  .heroText {
+    width: 60%;
+  }
+
+  .heroFunction {
+    width: 40%;
+  }
+
+  .reactLogo {
+    opacity: 0.07;
+  }
+}
+
+/* Mobile Breakpoint */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-  }
-
-  .heroText,
-  .heroFunction {
-    width: 100%;
+    min-height: auto;
   }
 
   .heroText {
-    height: 100vh;
-    padding: 0 0.5rem;
+    width: 100%;
+
+    padding: 4rem 1rem;
   }
 
   .heroFunction {
@@ -160,12 +183,63 @@
   }
 
   .reactLogo {
-    height: 40vh;
-    width: 40vh;
+    height: clamp(30vh, 40vw, 40vh);
+    width: clamp(30vh, 40vw, 40vh);
+    opacity: 0.05;
+  }
+
+  .heroTitle {
+    text-align: center;
+    padding: 0;
   }
 
   .heroSubtitle {
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .heroButtons {
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  .scrollContainer {
+    position: relative;
+    padding: 2rem 1rem;
+  }
+
+  .scrollGroup {
+    padding: 0.5rem;
+  }
+
+  .functionCard {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+  .heroText {
+    padding: 3rem 0.75rem 0;
+  }
+  .heroSubtitle {
+    padding: 1rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
-    padding: 0 0.5rem;
+  }
+
+  .heroButton {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .heroLink {
+    width: 100%;
   }
 }

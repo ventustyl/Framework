@@ -11,7 +11,8 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const installRef = useRef<HTMLButtonElement>(null);
+  const fonctionnaliteRef = useRef<HTMLButtonElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const setupGsapAnimations = useCallback(() => {
@@ -32,7 +33,13 @@ const Hero = () => {
       );
 
       gsap.fromTo(
-        buttonRef.current,
+        installRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1, delay: 0.9, ease: "back.out(1.7)" }
+      );
+
+      gsap.fromTo(
+        fonctionnaliteRef.current,
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 1, delay: 0.9, ease: "back.out(1.7)" }
       );
@@ -67,7 +74,7 @@ const Hero = () => {
   const duplicatedFunctions = [...heroFunctions, ...heroFunctions];
 
   return (
-    <div className={style.hero} ref={heroRef}>
+    <div className={style.hero} ref={heroRef} id="hero">
       <div className={style.heroText}>
         <div className={style.reactLogo} aria-hidden="true" />
         <h1 className={style.heroTitle} ref={titleRef}>
@@ -82,15 +89,26 @@ const Hero = () => {
           une solution moderne et performante pour créer des applications web,
           React est un choix stratégique.
         </p>
-        <a  className={style.heroLink} href="/#properties">
-          <button
-            className={style.heroButton}
-            ref={buttonRef}
-            onClick={() => console.log("En savoir plus sur React")}
-          >
-            En savoir plus
-          </button>
-        </a>
+        <div className={style.heroButtons}>
+          <a className={style.heroLink} href="/#installation">
+            <button
+              className={style.heroButton}
+              ref={installRef}
+              onClick={() => console.log("En savoir plus sur React")}
+            >
+              Installer React
+            </button>
+          </a>
+          <a className={style.heroLink} href="/#properties">
+            <button
+              className={style.heroButton}
+              ref={fonctionnaliteRef}
+              onClick={() => console.log("En savoir plus sur React")}
+            >
+              Fonctionnalités
+            </button>
+          </a>
+        </div>
       </div>
       <div className={style.heroFunction}>
         <div className={style.heroOverlay}></div>
@@ -119,7 +137,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

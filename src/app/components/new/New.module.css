@@ -1,0 +1,206 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.titleh3 {
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  color: #000000;
+  padding: clamp(1rem, 3vw, 2rem) 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+}
+
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.content {
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1a202c;
+  line-height: 1.4;
+}
+
+.meta {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #4a5568;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  display: inline-block;
+  margin-top: auto;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+.error {
+  color: #dc2626;
+  padding: 1rem;
+  text-align: center;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #4a5568;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+}
+
+/* Grand écran */
+@media (min-width: 1441px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container {
+    padding: 3rem;
+  }
+}
+
+/* Écran moyen */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablette */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Mobile large */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .titleh3 {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+    padding: 1rem 0;
+  }
+
+  .card {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+/* Mobile petit */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .content {
+    padding: 0.75rem;
+  }
+
+  .description {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}
+
+/* Mode paysage */
+@media (max-height: 600px) and (orientation: landscape) {
+  .container {
+    min-height: auto;
+  }
+
+  .imageContainer {
+    padding-top: 40%;
+  }
+}

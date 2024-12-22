@@ -1,35 +1,222 @@
+.titleh2 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #20232a;
+  margin-bottom: 2rem;
+  padding: 4rem 0 0;
+}
 .article {
-    width: min(80vw, 1200px);
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
+  width: min(95vw, 1520px);
+  min-height: 75vh;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 10px; /* Ajouté pour correspondre à la card */
+  position: relative;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.article::after,
+.article::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #a1eefd,
+    #33646e,
+    #a1eefd,
+    #2a555e,
+    #a1eefd
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 6px;
+  border-radius: 10px;
+  animation: 6s spin linear infinite;
+}
+
+.article::before {
+  padding: 5px;
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
   }
-  
-  .glowIn {
-    color: black;
-    overflow: hidden;
-    margin-bottom: 1rem;
+  to {
+    --angle: 360deg;
   }
-  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh + 60px);
+}
+
+.glowIn {
+  color: black;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+.glowIn span {
+  display: inline-block;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  white-space: pre-wrap;
+  will-change: opacity;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
   .glowIn span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(0);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    white-space: pre-wrap;
+    transition: none;
+    opacity: 1;
   }
-  
-  /* Support pour les utilisateurs qui préfèrent réduire les animations */
-  @media (prefers-reduced-motion: reduce) {
-    .glowIn span {
-      transition: none;
-      opacity: 1;
-      transform: none;
-    }
+}
+
+.mouseOver {
+  position: relative;
+  right: 0;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: clamp(1rem, 4vw, 2rem);
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Russo One", sans-serif;
+  color: transparent;
+  background-image: linear-gradient(
+    135deg,
+    #a1eefd 0%,
+    #76daf5 25%,
+    #4cc4eb 50%,
+    #76daf5 75%,
+    #a1eefd 100%
+  );
+  background-size: 400% 100%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transform: translateZ(0); /* Active GPU acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transition: text-shadow 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  text-align: right;
+}
+
+.mouseOver::before {
+  content: "Passer la souris dans le cadre";
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 6%,
+    rgba(255, 255, 255, 0.9) 7.5%,
+    rgba(255, 255, 255, 0.9) 8%,
+    transparent 9.5%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+  transform: translateZ(0);
+  will-change: background-position;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
   }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Support pour les écrans à contraste élevé */
+@media (forced-colors: active) {
+  .mouseOver {
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: LinkText;
+  }
+}
+
+@media (max-width: 768px) {
+  .article {
+    cursor: default;
+    width: 90%;
+    margin: 0 auto 30px;
+  }
+
+  .titleh2 {
+    padding-top: 1rem;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 1;
+  }
+
+  .articleTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+  }
+
+  .paragraphsContainer {
+    padding: 0;
+  }
+
+  .container {
+    height: auto;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+}

@@ -6,6 +6,8 @@
   font-family: Montserrat, "sans-serif";
   font-weight: 300;
   scroll-behavior: smooth;
+  text-decoration: none;
+  
 }
 
 ::-webkit-scrollbar {
@@ -17,6 +19,3 @@ html {
   -ms-overflow-style: none; /* Internet Explorer */
 }
 
-.main {
-  height: 400vh;
-}

@@ -57,6 +57,7 @@ const Properties: React.FC = () => {
 
   return (
     <div className={styles.scrollContainer} id="properties">
+      <h3 className={styles.titleh3}>Fonctionnalités de React</h3>
       <div className={styles.cardContainer} ref={scrollContainerRef}>
         {REACT_CONCEPTS.map((concept) => (
           <div key={concept.id} className={styles.card}>

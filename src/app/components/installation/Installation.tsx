@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useCallback, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./Installation.module.css";
 
@@ -8,35 +8,46 @@ interface AnimatedTextProps {
   text: string;
   className?: string;
   tag?: React.ElementType;
+  isMobile: boolean;
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
   text,
   className = "",
   tag: Tag = "p",
+  isMobile
 }) => {
   const elementRef = useRef<HTMLElement>(null);
 
   const initializeText = useCallback(() => {
-    if (!elementRef.current) return;
+    if (!elementRef.current || isMobile) return;
 
     const element = elementRef.current;
-    const letters = Array.from(text);
-    element.innerHTML = ""; // Clear existing content
+    const words = text.split(' ');
+    element.innerHTML = "";
 
-    letters.forEach((letter) => {
-      const span = document.createElement("span");
-      span.textContent = letter === " " ? "\u00A0" : letter; // Utilise un espace insécable pour les espaces
-      span.style.opacity = "0";
-      span.style.display = "inline-block";
-      element.appendChild(span);
+    words.forEach((word, index) => {
+      const wordSpan = document.createElement("span");
+      wordSpan.className = styles.wordWrapper;
+      
+      const textNode = document.createTextNode(word);
+      wordSpan.appendChild(textNode);
+      
+      if (index < words.length - 1) {
+        wordSpan.appendChild(document.createTextNode(" "));
+      }
+      
+      element.appendChild(wordSpan);
     });
-  }, [text]);
+  }, [text, isMobile]);
 
-  // Initialise les spans au montage
   useEffect(() => {
     initializeText();
   }, [initializeText]);
+
+  if (isMobile) {
+    return <Tag className={`${styles.mobileText} ${className}`.trim()}>{text}</Tag>;
+  }
 
   return (
     <Tag ref={elementRef} className={`${styles.glowIn} ${className}`.trim()} />
@@ -46,105 +57,153 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 const Installation: React.FC = () => {
   const articleRef = useRef<HTMLElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const isAnimatingRef = useRef(false);
+  const activeAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const animateText = useCallback(() => {
-    if (!articleRef.current || isAnimatingRef.current) return;
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-    isAnimatingRef.current = true;
-    const spans = articleRef.current.querySelectorAll("span");
+    // Vérification initiale
+    checkMobile();
 
-    // Réinitialise d'abord toutes les spans
-    gsap.set(spans, { opacity: 0, textShadow: "none" });
+    // Ajouter un écouteur pour le redimensionnement
+    window.addEventListener('resize', checkMobile);
 
-    // Puis lance l'animation
-    gsap.to(spans, {
-      opacity: 1,
-      duration: 0.5,
-      stagger: 0.02,
-      ease: "power2.inOut",
-      textShadow: "0 0 20px white",
-      onComplete: () => {
-        isAnimatingRef.current = false;
-      },
-    });
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
-  const resetAnimation = useCallback(() => {
-    if (!articleRef.current) return;
+  const animateText = useCallback(() => {
+    if (!articleRef.current || isMobile) return;
 
-    // Annule le timeout précédent si existe
+    const spans = articleRef.current.querySelectorAll("span");
+    const tl = gsap.timeline();
+    activeAnimationRef.current = tl;
+
+    gsap.set(spans, {
+      opacity: 0,
+      textShadow: "none",
+    });
+
+    tl.to(spans, {
+      opacity: 1,
+      duration: 1,
+      stagger: {
+        each: 0.01,
+        ease: "power1.inOut",
+      },
+      textShadow: "0 0 20px rgba(255, 255, 255, 0.8)",
+      ease: "power2.inOut",
+    });
+
+    return tl;
+  }, [isMobile]);
+
+  const resetAnimation = useCallback(() => {
+    if (!articleRef.current || isMobile) return;
+
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
 
     const spans = articleRef.current.querySelectorAll("span");
 
-    // Arrête toutes les animations en cours
-    gsap.killTweensOf(spans);
+    if (activeAnimationRef.current) {
+      activeAnimationRef.current.kill();
+    }
 
-    // Animation de disparition
-    gsap.to(spans, {
+    const tl = gsap.timeline();
+    activeAnimationRef.current = tl;
+
+    tl.to(spans, {
       opacity: 0,
-      duration: 0.3,
-      stagger: 0.01,
-      ease: "power2.inOut",
-      textShadow: "none",
-      onComplete: () => {
-        isAnimatingRef.current = false;
+      duration: 0.1,
+      stagger: {
+        each: 0.01,
+        ease: "power1.inOut",
       },
+      textShadow: "none",
+      ease: "power2.inOut",
     });
-  }, []);
+
+    return tl;
+  }, [isMobile]);
 
   const handleMouseEnter = useCallback(() => {
-    resetAnimation(); // Réinitialise d'abord
-    // Petit délai pour s'assurer que la réinitialisation est terminée
+    if (isMobile) return;
+    
+    resetAnimation();
     timeoutRef.current = setTimeout(() => {
       animateText();
     }, 100);
-  }, [animateText, resetAnimation]);
+  }, [animateText, resetAnimation, isMobile]);
 
   const handleMouseLeave = useCallback(() => {
+    if (isMobile) return;
     resetAnimation();
-  }, [resetAnimation]);
+  }, [resetAnimation, isMobile]);
 
-  // Nettoyage au démontage
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-      if (articleRef.current) {
-        const spans = articleRef.current.querySelectorAll("span");
-        gsap.killTweensOf(spans);
+      if (activeAnimationRef.current) {
+        activeAnimationRef.current.kill();
       }
     };
   }, []);
 
   const articleContent = {
-    title: "Installation de React : Un Guide Étape par Étape",
+    title: "Guide Étape par Étape",
     paragraphs: [
-      " React est une bibliothèque JavaScript populaire utilisée pour créer des interfaces utilisateur. Développée par Facebook, elle permet de construire des applications web dynamiques et réactives grâce à une approche basée sur les composants. Avant de commencer, assurez-vous d'avoir Node.js et npm ou yarn installés sur votre machine.",
-      " Téléchargez et installez Node.js :Visitez le site officiel de Node.js (https://nodejs.org) et téléchargez la dernière version LTS (Long Term Support). L'installation de Node.js inclut également npm, le gestionnaire de paquets.",
-      " Vérifiez l'installation :Ouvrez un terminal ou une console et exécutez les commandes suivantes pour vérifier que Node.js et npm sont correctement installés: node -v npm -v Ces commandes doivent afficher les versions de Node.js et npm.",
-      " Téléchargez et installez Node.js :Visitez le site officiel de Node.js (https://nodejs.org) et téléchargez la dernière version LTS (Long Term Support). L'installation de Node.js inclut également npm, le gestionnaire de paquets.",
-      " Téléchargez et installez Node.js :Visitez le site officiel de Node.js (https://nodejs.org) et téléchargez la dernière version LTS (Long Term Support). L'installation de Node.js inclut également npm, le gestionnaire de paquets.",
-      " Téléchargez et installez Node.js :Visitez le site officiel de Node.js (https://nodejs.org) et téléchargez la dernière version LTS (Long Term Support). L'installation de Node.js inclut également npm, le gestionnaire de paquets.",
+      "React est une bibliothèque JavaScript populaire utilisée pour créer des interfaces utilisateur. Développée par Facebook, elle permet de construire des applications web dynamiques et réactives grâce à une approche basée sur les composants.",
+      "Prérequis : Avant de commencer, assurez-vous d'avoir Node.js et npm installés sur votre machine. Node.js inclut npm par défaut.",
+      "Étape 1 : Créez un nouveau projet React en utilisant create-react-app avec la commande : npx create-react-app mon-app",
+      "Étape 2 : Accédez au répertoire du projet avec : cd mon-app",
+      "Étape 3 : Lancez le serveur de développement : npm start",
+      "Étape 4 : Ouvrez votre navigateur et accédez à : http://localhost:3000",
+      "Étape 5 : Commencez à modifier src/App.js pour personnaliser votre application",
+      "Étape 6 : Pour construire votre application pour la production : npm run build",
+      "Structure du Projet : Familiarisez-vous avec les dossiers src/ et public/",
+      "Prochaines Étapes : Explorez la documentation officielle de React pour approfondir vos connaissances",
     ],
   };
 
   return (
-    <article
-      ref={articleRef}
-      className={styles.article}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <AnimatedText text={articleContent.title} tag="h1" />
-      {articleContent.paragraphs.map((paragraph, index) => (
-        <AnimatedText key={index} text={paragraph} />
-      ))}
-    </article>
+    <section className={styles.container} id="installation">
+      <h2 className={styles.titleh2}>Installation de React</h2>
+      <article
+        ref={articleRef}
+        className={`${styles.article} ${isMobile ? styles.mobileArticle : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <AnimatedText 
+          text={articleContent.title} 
+          tag="h2" 
+          className={styles.articleTitle}
+          isMobile={isMobile}
+        />
+        <div className={styles.paragraphsContainer}>
+          {articleContent.paragraphs.map((paragraph, index) => (
+            <AnimatedText 
+              key={index} 
+              text={paragraph} 
+              className={styles.paragraph}
+              isMobile={isMobile}
+            />
+          ))}
+        </div>
+        {!isMobile && (
+          <div className={styles.mouseOver}>Passer la souris dans le cadre</div>
+        )}
+      </article>
+    </section>
   );
 };
 

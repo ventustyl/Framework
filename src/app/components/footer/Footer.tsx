@@ -1,5 +1,82 @@
-import style from './Footer.module.css'
+"use client";
 
-export default function Footer() {
-  return <div className={style.footer}>Footer</div>;
-}
+import React from "react";
+import styles from "./Footer.module.css";
+import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.content}>
+        <div className={styles.section}>
+          <h3 className={styles.title}>À propos</h3>
+          <p className={styles.description}>
+            Découvrez les dernières actualités du framework react et restez informé des
+            évolutions du monde numérique avec notre veille technologique.
+          </p>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.title}>Liens rapides</h3>
+          <ul className={styles.links}>
+            <li>
+              <a href="//#installation">Install</a>
+            </li>
+            <li>
+              <a href="/#properties">Fonctions</a>
+            </li>
+            <li>
+              <a href="/#news">News</a>
+            </li>
+   
+          </ul>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.title}>Newsletter</h3>
+          <div className={styles.newsletter}>
+            <input
+              type="email"
+              placeholder="Votre email"
+              className={styles.input}
+            />
+            <button className={styles.button}>S'abonner</button>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.title}>Nous suivre</h3>
+          <div className={styles.social}>
+            <a href="#" className={styles.socialLink}>
+              <Github size={20} />
+            </a>
+
+            <a href="#" className={styles.socialLink}>
+              <Linkedin size={20} />
+            </a>
+            <a href="#" className={styles.socialLink}>
+              <Mail size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.bottom}>
+        <div className={styles.bottomContent}>
+          <p className={styles.copyright}>
+            © {currentYear} React & Eric Venturino
+          </p>
+          <div className={styles.legal}>
+            <a href="/">Politique de confidentialité</a>
+            <span className={styles.separator}>•</span>
+            <a href="/">Conditions d'utilisation</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

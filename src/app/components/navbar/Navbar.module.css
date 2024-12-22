@@ -49,6 +49,12 @@
   align-items: center;
   gap: 10px;
   color: inherit;
+  text-decoration: none;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
 }
 
 .toogle {
@@ -78,4 +84,30 @@
 .dark {
   transform: translateY(-50%) translateX(22px); /* Position dark */
   background: #75dffb;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    height: auto; /* Ajustement pour permettre un menu plus grand */
+    flex-direction: column; /* Empile les éléments verticalement */
+    align-items: flex-start;
+    padding: 10px; /* Ajustement des marges internes */
+  }
+
+  .navbarUl {   
+    gap: 10px;
+    width: 100%; /* S'étend sur toute la largeur */
+    font-size: 16px; /* Réduction de la taille de la police */
+  }
+
+  .navbarLi {
+    width: 100%; /* Occupe toute la largeur */
+    justify-content: flex-start;
+  }
+
+
+  .toogle {
+display: none;
+  }
 }
