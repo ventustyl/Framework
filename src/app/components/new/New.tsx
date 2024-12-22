@@ -14,7 +14,6 @@ interface Article {
 
 const News: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

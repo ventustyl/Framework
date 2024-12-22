@@ -70,8 +70,7 @@ const Hero = () => {
     setupInfiniteScroll();
   }, [setupGsapAnimations, setupInfiniteScroll]);
 
-  // Duplique les fonctions pour un défilement fluide
-  const duplicatedFunctions = [...heroFunctions, ...heroFunctions];
+
 
   return (
     <div className={style.hero} ref={heroRef} id="hero">
@@ -84,7 +83,7 @@ const Hero = () => {
           React, souvent appelé React.js, est une bibliothèque JavaScript
           open-source conçue par Facebook et utilisée par des millions de
           développeurs à travers le monde. Depuis sa création en 2013, elle est
-          devenue un incontournable pour le développement d'interfaces
+          devenue un incontournable pour le développement d&apos;interfaces
           utilisateur (UI) dynamiques, rapides et évolutives. Si vous recherchez
           une solution moderne et performante pour créer des applications web,
           React est un choix stratégique.

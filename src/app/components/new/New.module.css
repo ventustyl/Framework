@@ -94,7 +94,7 @@
 }
 
 .link {
-  color: #3b82f6;
+  color: #75dffb;
   text-decoration: none;
   font-weight: 500;
   font-size: clamp(0.875rem, 1vw, 1rem);
@@ -105,7 +105,7 @@
 
 .link:hover {
   text-decoration: underline;
-  color: #2563eb;
+  color: #75dffb;
 }
 
 .error {

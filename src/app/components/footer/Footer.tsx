@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./Footer.module.css";
-import { Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,8 +13,9 @@ const Footer = () => {
         <div className={styles.section}>
           <h3 className={styles.title}>À propos</h3>
           <p className={styles.description}>
-            Découvrez les dernières actualités du framework react et restez informé des
-            évolutions du monde numérique avec notre veille technologique.
+            Découvrez les dernières actualités du framework react et restez
+            informé des évolutions du monde numérique avec notre veille
+            technologique.
           </p>
         </div>
 
@@ -30,7 +31,6 @@ const Footer = () => {
             <li>
               <a href="/#news">News</a>
             </li>
-   
           </ul>
         </div>
 
@@ -42,7 +42,7 @@ const Footer = () => {
               placeholder="Votre email"
               className={styles.input}
             />
-            <button className={styles.button}>S'abonner</button>
+            <button className={styles.button}>S&apos;abonner</button>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ const Footer = () => {
           <div className={styles.legal}>
             <a href="/">Politique de confidentialité</a>
             <span className={styles.separator}>•</span>
-            <a href="/">Conditions d'utilisation</a>
+            <a href="/">Conditions d&apos;utilisation</a>
           </div>
         </div>
       </div>
