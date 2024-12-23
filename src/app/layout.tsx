@@ -2,10 +2,11 @@ import React, { JSX } from "react";
 import ClientLayout from "./ClientLayout";
 import Hero from "./components/hero/Hero";
 import Installation from "./components/installation/Installation";
-import News from "./components/new/New";
+
 import Properties from "./components/properties/Properties";
 import "./globals.css";
 import { ReactNode } from "react";
+import News from "./components/new/New";
 
 export const metadata = {
   title: "React (news, help, install, ...)",
@@ -22,7 +23,6 @@ export default function RootLayout({
       <body>
         <ClientLayout>
           <main className="main">
-            {children} {/* Add this line to render the page content */}
             <Hero />
             <Installation />
             <Properties />

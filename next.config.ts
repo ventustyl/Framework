@@ -1,15 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, // Active le mode strict de React
-  swcMinify: true, // Utilise le compilateur SWC pour minifier
+  reactStrictMode: true, // Active les vérifications strictes de React
+  swcMinify: true, // Active le minificateur SWC pour une meilleure performance
   images: {
-    domains: [""], // Ajouter des domaines pour le chargement d'images
+    domains: ["yourdomain.com"], // Ajoutez les domaines externes autorisés pour les images
   },
-  i18n: {
-    locales: ["fr"], // Gestion multilingue
-    defaultLocale: "fr",
-  },
+  output: "standalone", // Requis si vous voulez un déploiement autonome ou personnalisé
 };
 
 export default nextConfig;
