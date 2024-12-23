@@ -72,27 +72,16 @@ Les fichiers de production se trouveront dans le dossier `.next`.
 
 
 ` ├── public/`
-
 ` ├── src/`
-
 ` │   ├── app/`
-
 ` │   │   ├── components/`
-
 ` │   │   ├── globals.css`
-
 ` │   │   ├── layout.tsx`
-
 ` │   │   ├── page.tsx`
-
 ` │   ├── assets/`
-
 ` ├── .env`
-
 ` ├── package.json`
-
 ` ├── tsconfig.json`
-
 ` └── README.md`
 
 
