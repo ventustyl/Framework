@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import React from "react";
 import styles from "./New.module.css";
 import Link from "next/link";
@@ -24,7 +26,7 @@ const News: React.FC = () => {
             <h2 className={styles.title}>If Not React, Then What?</h2>
             <p className={styles.meta}>Par Alex Russell • 30/11/2024</p>
             <p className={styles.description}>
-              Frameworkism is now the dominant creed of today's frontend
+              Frameworkism is now the dominant creed of today&apos;s frontend
               discourse, and it&apos;s bullshit. We owe it to ourselves and to
               our users to reject dogma and embrace engineering as a discipline.
             </p>
