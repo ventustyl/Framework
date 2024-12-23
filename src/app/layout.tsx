@@ -1,12 +1,8 @@
+// src/app/layout.tsx
 import React, { JSX } from "react";
 import ClientLayout from "./ClientLayout";
-import Hero from "./components/hero/Hero";
-import Installation from "./components/installation/Installation";
-
-import Properties from "./components/properties/Properties";
 import "./globals.css";
 import { ReactNode } from "react";
-import News from "./components/new/New";
 
 export const metadata = {
   title: "React (news, help, install, ...)",
@@ -22,13 +18,7 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <ClientLayout>
-          <main className="main">
-            <Hero />
-            <Installation />
-            <Properties />
-            <News />
-            {children} {/* Ajout de children ici */}
-          </main>
+          {children}
         </ClientLayout>
       </body>
     </html>
