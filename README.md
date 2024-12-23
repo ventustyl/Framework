@@ -71,18 +71,18 @@ Les fichiers de production se trouveront dans le dossier `.next`.
 ## Structure du projet
 
 
-` ├── public/`
-` ├── src/`
-` │   ├── app/`
-` │   │   ├── components/`
-` │   │   ├── globals.css`
-` │   │   ├── layout.tsx`
-` │   │   ├── page.tsx`
-` │   ├── assets/`
-` ├── .env`
-` ├── package.json`
-` ├── tsconfig.json`
-` └── README.md`
+` ├── public/ `
+` ├── src/ `
+` │   ├── app/ `
+` │   │   ├── components/ `
+` │   │   ├── globals.css `
+` │   │   ├── layout.tsx `
+` │   │   ├── page.tsx `
+` │   ├── assets/ `
+` ├── .env `
+` ├── package.json `
+` ├── tsconfig.json `
+` └── README.md `
 
 
 ## Contribuer
