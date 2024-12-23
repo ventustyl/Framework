@@ -73,29 +73,16 @@ Les fichiers de production se trouveront dans le dossier `.next`.
 
 `├── public/ # Fichiers statiques  `  
 `   ├── src/  `  
-`   ├── assets/ # Images et ressources  `  
+`   ├──  app/ # Images et ressources  `  
 `   │ ├── components/ # Composants réutilisables  `  
-`   │ ├── pages/ # Pages principales  `  
-`   │ ├── styles/ # Fichiers CSS/SCSS  `  
-`   │ ├── App.jsx # Point d'entrée de l'application  `  
-`   │ └── main.jsx # Initialisation de React et Vite  `  
+`   │ ├── page.tsx # Pages principales  `  
+`   │ ├── globals.css # Fichiers CSS/SCSS  `  
+`   │ ├── layout.tsx # Point d'entrée de l'application  `  
+`   │ └── assets/  # Initialisation de React et Vite  `  
 `   ├── .env # Variables d'environnement  `  
 `   ├── package.json # Dépendances et scripts  `  
 `   └── README.md # Documentation  `  
 
-
-` ├── public/ `
-` ├── src/ `
-` │   ├── app/ `
-` │   │   ├── components/ `
-` │   │   ├── globals.css `
-` │   │   ├── layout.tsx `
-` │   │   ├── page.tsx `
-` │   ├── assets/ `
-` ├── .env `
-` ├── package.json `
-` ├── tsconfig.json `
-` └── README.md `
 
 
 ## Contribuer
