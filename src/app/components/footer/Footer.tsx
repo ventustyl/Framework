@@ -14,7 +14,7 @@ const Footer = () => {
         <div className={styles.section}>
           <h3 className={styles.title}>À propos</h3>
           <p className={styles.description}>
-            Découvrez les dernières actualités du framework react et restez
+            Découvrez les dernières actualités du framework React et restez
             informé des évolutions du monde numérique avec notre veille
             technologique.
           </p>
