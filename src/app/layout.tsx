@@ -27,6 +27,7 @@ export default function RootLayout({
             <Installation />
             <Properties />
             <News />
+            {children} {/* Ajout de children ici */}
           </main>
         </ClientLayout>
       </body>
