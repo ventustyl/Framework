@@ -3,6 +3,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -49,16 +50,16 @@ const Footer = () => {
         <div className={styles.section}>
           <h3 className={styles.title}>Nous suivre</h3>
           <div className={styles.social}>
-            <a href="#" className={styles.socialLink}>
+            <Link href="#" className={styles.socialLink}>
               <Github size={20} />
-            </a>
+            </Link>
 
-            <a href="#" className={styles.socialLink}>
+            <Link href="#" className={styles.socialLink}>
               <Linkedin size={20} />
-            </a>
-            <a href="#" className={styles.socialLink}>
+            </Link>
+            <Link href="#" className={styles.socialLink}>
               <Mail size={20} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
