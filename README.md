@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Framework - Next.js & TypeScript
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ce projet est un framework moderne développé avec **Next.js** et **TypeScript**, conçu pour offrir une base solide pour des applications web rapides et modulaires. Il met en œuvre des composants réutilisables et des pratiques de développement modernes pour une efficacité accrue.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fonctionnalités principales
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🌟 **Architecture modulaire** : Organisation claire des fichiers et des composants.
+- ⚡ **Performance optimisée** : Next.js pour un rendu rapide et un temps de chargement réduit.
+- 🎨 **Styles modulaires** : CSS Modules pour des styles encapsulés.
+- 🚀 **Compatible avec TypeScript** : Typage statique pour un code robuste et fiable.
+- 🔒 **Meilleures pratiques de sécurité** : Gestion des variables sensibles via `.env`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies utilisées
 
-## Learn More
+### Frontend :
+- **Next.js** : Framework React moderne.
+- **TypeScript** : Pour un développement typé et robuste.
+- **CSS Modules** : Styles encapsulés par composant.
 
-To learn more about Next.js, take a look at the following resources:
+### Outils & Configurations :
+- **ESLint** : Analyse statique pour garantir la qualité du code.
+- **Prettier** : Formatage automatique pour un code propre.
+- **Variables d'environnement** : Gestion des configurations sensibles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prérequis
 
-## Deploy on Vercel
+- Node.js version 16+ ([Téléchargez ici](https://nodejs.org/))
+- npm ou Yarn (préinstallé avec Node.js)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Étapes d’installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clonez ce dépôt :**
+
+   ```bash
+   git clone https://github.com/votre-utilisateur/framework-nextjs-ts.git`` 
+
+2.  **Accédez au dossier du projet :**
+    
+    `cd framework-nextjs-ts` 
+    
+3.  **Installez les dépendances :**
+    
+    `npm install` 
+    
+4.  **Lancez le serveur de développement :**
+    
+    `npm run dev` 
+    
+5.  **Accédez au projet dans votre navigateur :**
+    
+    -   Adresse locale : http://localhost:3000
+
+## Déploiement
+
+### Hébergement
+
+Ce projet est prêt à être déployé sur **Vercel** ou d'autres plateformes supportant Next.js.
+
+### Commandes de build
+
+Pour générer une version prête pour la production :
+
+`npm run build` 
+
+Les fichiers de production se trouveront dans le dossier `.next`.
+
+## Structure du projet
+
+
+├── public/                # Fichiers statiques
+├── src/
+│   ├── app/              # Application principale
+│   │   ├── components/   # Composants réutilisables
+│   │   ├── globals.css   # Styles globaux
+│   │   ├── layout.tsx    # Mise en page générale
+│   │   ├── page.tsx      # Page d'accueil
+│   ├── assets/           # Images et ressources
+├── .env                  # Variables d'environnement
+├── package.json          # Dépendances et scripts
+├── tsconfig.json         # Configuration TypeScript
+└── README.md             # Documentation
+
+
+## Contribuer
+
+Les contributions sont bienvenues ! Voici comment vous pouvez contribuer :
+
+1.  **Forkez le dépôt.**
+    
+2.  **Créez une branche pour vos modifications :**    
+
+    `git checkout -b feature/amelioration` 
+    
+3.  **Faites un commit :**    
+    
+    `git commit -m "Ajout de nouvelles fonctionnalités"` 
+    
+4.  **Poussez vos modifications :**
+    
+    `git push origin feature/amelioration` 
+    
+5.  **Créez une pull request sur GitHub.**
+    
+
+## Auteur
+
+👤 **Eric Venturino**
+
+Développeur web passionné par les technologies modernes comme Next.js et TypeScript.
+
+-   **Site personnel** : [https://venturino.site](https://venturino.site)
+-   **GitHub** : [Mon GitHub](https://github.com/ventustyl)
+-   **LinkedIn** : [Mon LinkedIn](https://www.linkedin.com/in/eric-venturino/)
+
+## Licence
+
+Ce projet est sous licence **MIT**. Vous êtes libre de l'utiliser, de le modifier et de le distribuer.
+
+## Remerciements
+
+Un grand merci à la communauté Next.js et TypeScript pour leurs outils et ressources exceptionnels.
+
+
+ `N'hésitez pas à l'adapter selon vos besoins spécifiques ou à demander des modifications ! 😊`
