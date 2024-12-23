@@ -24,13 +24,13 @@ const Footer = () => {
           <h3 className={styles.title}>Liens rapides</h3>
           <ul className={styles.links}>
             <li>
-              <a href="//#installation">Install</a>
+              <Link href="//#installation">Install</Link>
             </li>
             <li>
-              <a href="/#properties">Fonctions</a>
+              <Link href="/#properties">Fonctions</Link>
             </li>
             <li>
-              <a href="/#news">News</a>
+              <Link href="/#news">News</Link>
             </li>
           </ul>
         </div>
@@ -70,9 +70,9 @@ const Footer = () => {
             © {currentYear} React & Eric Venturino
           </p>
           <div className={styles.legal}>
-            <a href="/">Politique de confidentialité</a>
+            <Link href="/">Politique de confidentialité</Link>
             <span className={styles.separator}>•</span>
-            <a href="/">Conditions d&apos;utilisation</a>
+            <Link href="/">Conditions d&apos;utilisation</Link>
           </div>
         </div>
       </div>
