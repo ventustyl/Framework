@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { heroFunctions } from "./data/heroFunctions";
 import { HeroFunction } from "./types";
 import style from "./Hero.module.css";
+import Link from "next/link";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -70,8 +71,6 @@ const Hero = () => {
     setupInfiniteScroll();
   }, [setupGsapAnimations, setupInfiniteScroll]);
 
-
-
   return (
     <div className={style.hero} ref={heroRef} id="hero">
       <div className={style.heroText}>
@@ -89,7 +88,7 @@ const Hero = () => {
           React est un choix stratégique.
         </p>
         <div className={style.heroButtons}>
-          <a className={style.heroLink} href="/#installation">
+          <Link className={style.heroLink} href="/#installation">
             <button
               className={style.heroButton}
               ref={installRef}
@@ -97,8 +96,8 @@ const Hero = () => {
             >
               Installer React
             </button>
-          </a>
-          <a className={style.heroLink} href="/#properties">
+          </Link>
+          <Link className={style.heroLink} href="/#properties">
             <button
               className={style.heroButton}
               ref={fonctionnaliteRef}
@@ -106,7 +105,7 @@ const Hero = () => {
             >
               Fonctionnalités
             </button>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={style.heroFunction}>
